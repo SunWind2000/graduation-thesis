@@ -1,0 +1,81 @@
+\documentclass[UTF8]{ctexart}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry} %页边距
+\usepackage{helvet}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb} % 数学公式、符号
+\usepackage{amsthm} % 根据 amsthm 的手册, amsthm 的加载要在 amsmath 之后
+% 中文定理环境 % \indent 为了段前空两格
+\newtheorem{theorem}{\indent 定理}[section]
+\newtheorem{lemma}[theorem]{\indent 引理}
+\newtheorem{proposition}[theorem]{\indent 命题}
+\newtheorem{corollary}[theorem]{\indent 推论}
+\newtheorem{definition}{\indent 定义}[section]
+\newtheorem{example}{\indent 例}[section]
+\newtheorem{remark}{\indent 注}[section]
+\newenvironment{solution}{\begin{proof}[\indent\textbf 解]}{\end{proof}}
+\renewcommand{\proofname}{\indent\textbf{证明}}
+\renewcommand{\qedsymbol}{$\blacksquare$}    % 将证毕符号改为黑色正方形
+% % English theorem environment
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{definition}{Definition}[section]
+% \newtheorem{remark}{Remark}[section]
+% \newtheorem{example}{Example}[section]
+% \newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+% \renewcommand{\qedsymbol}{$\blacksquare$}    % 将证毕符号改为黑色正方形
+\usepackage{graphicx}   % 图片
+\usepackage{url}        % 超链接
+\usepackage{bm}         % 加粗方程字体
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\bibliographystyle{plain}
+\renewcommand{\algorithmicrequire}{ \textbf{Input:}}   
+\renewcommand{\algorithmicensure}{ \textbf{Initialize:}} 
+\renewcommand{\algorithmicreturn}{ \textbf{Output:}}   
+% 算法格式
+\usepackage{fancyhdr} % 设置页眉、页脚
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\usepackage[colorlinks,linkcolor=red,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage{multicol} % 多栏
+\title{\textbf{Title}}
+\author{\sffamily author1$^1$, \sffamily author2$^2$, \sffamily author3$^3$}
+\date{(Dated: \today)}
+\setlength{\headheight}{15pt}
+\begin{document}
+    \maketitle
+        \noindent{\bf Abstract: }This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.This is abstract.\\
+
+        \noindent{\bf Keywords: }Keyword1; Keyword2; Keyword3;...
+    %\begin{multicols}{2} % 双栏
+    \section{Introduction}
+    This is introduction.This is introduction\cite{duane1971close}.This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.
+    \subsection{title}
+    This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.
+    \subsubsection{title}
+    This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.This is introduction.
+    \section{title}
+    \noindent Equations: 
+    \begin{equation}
+        E=mc^2
+    \end{equation}
+    \begin{equation}
+        H\psi=E\psi
+    \end{equation}\\
+    $\partial\partial=0$, and
+    $$\iint_S \vec{F}\cdot \vec{n}d\sigma=\iiint \nabla\times\vec{F}dV$$
+    \section{Conclusion}
+    This is conclusion. This is conclusion. This is conclusion. This is conclusion. This is conclusion. This is conclusion. This is conclusion. This is conclusion. This is conclusion.This is conclusion.
+    \section*{Acknowledgments}
+     These are acknowledgments. These are acknowledgments. These are acknowledgments. These are acknowledgments. These are acknowledgments. These are acknowledgments.
+    \bibliography{a-template-based-on-LaTeX.bib} % 参考文献
+    %\end{multicols}
+\end{document}

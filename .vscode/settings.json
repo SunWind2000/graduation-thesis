@@ -1,0 +1,194 @@
+{
+    // ======================== LaTeX 设置 BEGIN  ========================
+    // 参数的详细配置见：https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile
+  
+    // BibTeX 格式
+    "latex-workshop.bibtex-format.tab": "tab",
+  
+    // 自动编译，全部关闭，当且仅当你认为有需要的时候才会去做编译
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+  
+    // 设置 LaTeX-Workshop 的 PDF 预览程序，external 指的是外部程序
+    // 注意核实 SumatraPDF.exe 的路径
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.ref.viewer": "external",
+    "latex-workshop.view.pdf.external.viewer.command": "D:/soft/SumatraPDF/SumatraPDF.exe",
+    "latex-workshop.view.pdf.external.viewer.args": [
+      "%PDF%"
+    ],
+  
+    // 配置正向、反向搜索：.tex -> .pdf
+    // 注意核实 SumatraPDF.exe 的路径
+    "latex-workshop.view.pdf.external.synctex.command": "D:/soft/SumatraPDF/SumatraPDF.exe",
+    "latex-workshop.view.pdf.external.synctex.args": [
+      // 正向搜索
+      "-forward-search",
+      "%TEX%",
+      "%LINE%",
+      "-reuse-instance",
+      // 反向搜索
+      // 注意核实 Code.exe 以及 cli.js 的路径
+      "-inverse-search",
+      "\"D:/soft/Microsoft VS Code/Code.exe\" \"D:/soft/Microsoft VS Code/resources/app/out/cli.js\" -gr %f:%l",
+      "%PDF%"
+    ],
+  
+    // 这是一些独立的编译选项，可以作为工具被编译方案调用
+    "latex-workshop.latex.tools": [
+      {
+        // Windows 系统的 XeLaTeX 编译
+        "name": "Windows XeLaTeX",
+        "command": "xelatex",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "-pdf",
+          "%DOCFILE%"
+        ]
+      },
+      {
+        // Windows 系统的 BibTeX 编译
+        "name": "Windows BibTeX",
+        "command": "bibtex",
+        "args": [
+          "%DOCFILE%"
+        ]
+      },
+      {
+        // 适用于 Linux 的 Windows 子系统（即 WSL）的 XeLaTeX 编译
+        // 若使用 WSL 系统，注意核实 xelatex 的路径
+        "name": "WSL XeLaTeX",
+        "command": "wsl",
+        "args": [
+          "/usr/local/texlive/2020/bin/x86_64-linux/xelatex",
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "-pdf",
+          //"-output-directory=%OUTDIR%",
+          //"-aux-directory=%OUTDIR%",
+          "%DOCFILE%"
+        ]
+      },
+      {
+        // 适用于 Linux 的 Windows 子系统（即 WSL）的 BibTeX 编译
+        // 若使用 WSL 系统，注意核实 bibtex 的路径
+        "name": "WSL BibTeX",
+        "command": "wsl",
+        "args": [
+          "/usr/local/texlive/2020/bin/x86_64-linux/bibtex",
+          "%DOCFILE%"
+        ]
+      },
+      {
+        // macOS 或者 Linux 系统的 XeLaTeX 编译
+        // 两种操作系统的操作方式相同
+        "name": "macOS / Linux XeLaTeX",
+        "command": "xelatex",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "-pdf",
+          "%DOCFILE%"
+        ]
+      },
+      {
+        // macOS 或者 Linux 系统的 BibTeX 编译
+        // 两种操作系统的操作方式相同
+        "name": "macOS / Linux BibTeX",
+        "command": "bibtex",
+        "args": [
+          "%DOCFILE%"
+        ]
+      }
+    ],
+  
+    // 这是一些编译方案，会出现在 GUI 菜单里
+    "latex-workshop.latex.recipes": [
+      {
+        // 1.1 Windows 系统编译无交叉引用的文档
+        //一般指简单的小文档
+        //这个选项不太常用，因为绝大多数文章都需要有类似于“如图 x-x 所示”的交叉引用或者参考文献索引
+        "name": "1.1 Windows 系统 XeLaTeX 简单编译",
+        "tools": [
+          "Windows XeLaTeX"
+        ]
+      },
+      {
+        // 1.2 Windows 系统编译带有带有交叉引用的文档，最多需要进行四次编译
+        "name": "1.2 Windows 系统 Xe->Bib->Xe->Xe 复杂编译",
+        "tools": [
+          "Windows XeLaTeX",
+          "Windows BibTeX",
+          "Windows XeLaTeX",
+          "Windows XeLaTeX"
+        ]
+      },
+      {
+        // 2.1  WSL 系统编译无交叉引用的文档
+        "name": "2.1 WSL 系统 XeLaTeX 简单编译",
+        "tools": [
+          "WSL XeLaTeX"
+        ]
+      },
+      {
+        // 2.2 WSL 系统编译带有带有交叉引用的文档，最多需要进行四次编译
+        "name": "2.2 WSL 系统 Xe->Bib->Xe->Xe 复杂编译",
+        "tools": [
+          "WSL XeLaTeX",
+          "WSL BibTeX",
+          "WSL XeLaTeX",
+          "WSL XeLaTeX"
+        ]
+      },
+      {
+        // 3.1 macOS / Linux 平台编译无交叉引用的文档
+        "name": "3.1 macOS / Linux 系统 XeLaTeX 简单编译",
+        "tools": [
+          "macOS XeLaTeX"
+        ]
+      },
+      {
+        // 3.2 macOS / Linux 平台编译带有带有交叉引用的文档，最多需要进行四次编译
+        "name": "3.2 macOS / Linux 系统 Xe->Bib->Xe->Xe 复杂编译",
+        "tools": [
+          "macOS / Linux XeLaTeX",
+          "macOS / Linux BibTeX",
+          "macOS / Linux XeLaTeX",
+          "macOS / Linux XeLaTeX"
+        ]
+      }
+    ],
+  
+    // 清空中间文件
+    "latex-workshop.latex.clean.fileTypes": [
+      "*.aux",
+      "*.bbl",
+      "*.blg",
+      "*.idx",
+      "*.ind",
+      "*.lof",
+      "*.lot",
+      "*.out",
+      "*.toc",
+      "*.acn",
+      "*.acr",
+      "*.alg",
+      "*.glg",
+      "*.glo",
+      "*.gls",
+      "*.ist",
+      "*.fls",
+      "*.log",
+      "*.fdb_latexmk",
+      "*.bcf",
+      "*.run.xml"
+    ],
+    "[latex]": {
+      "editor.defaultFormatter": "James-Yu.latex-workshop"
+    }
+    // ======================== LaTeX 设置 END ========================
+  }
